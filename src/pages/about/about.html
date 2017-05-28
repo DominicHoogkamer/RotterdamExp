@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Maps
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <sebm-google-map [latitude]="51.924420" [longitude]="4.477733" [zoom]="16">
+          <sebm-google-map-marker [latitude]="51.924420" [longitude]="4.477733" [label]="'B'">
+            <sebm-google-map-info-window [disableAutoPan]="true">
+         Hi, this is the content of the <strong>info window</strong>
+       </sebm-google-map-info-window>
+          </sebm-google-map-marker>
+          <sebm-google-map-marker [latitude]="51.923674" [longitude]="4.470496" [label]="'B'"></sebm-google-map-marker>
+     <sebm-google-map-polyline>
+         <sebm-google-map-polyline-point [latitude]="51.924420" [longitude]="4.477733">
+         </sebm-google-map-polyline-point>
+         <sebm-google-map-polyline-point [latitude]="51.923674" [longitude]="4.470496">
+         </sebm-google-map-polyline-point>
+     </sebm-google-map-polyline>        </sebm-google-map>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
