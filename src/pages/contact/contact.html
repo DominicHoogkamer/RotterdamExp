@@ -1,17 +1,61 @@
 <ion-content padding>
-  <ion-fab center middle>
-    <button ion-fab color="danger"><ion-icon name="md-share"></ion-icon></button>
-    <ion-fab-list side="top">
-      <button ion-fab color="primary"><ion-icon name="logo-vimeo"></ion-icon></button>
-    </ion-fab-list>
-    <ion-fab-list side="bottom">
-      <button ion-fab color="secondary"><ion-icon name="logo-facebook"></ion-icon></button>
-    </ion-fab-list>
-    <ion-fab-list side="left">
-      <button ion-fab color="light"><ion-icon name="logo-googleplus"></ion-icon></button>
-    </ion-fab-list>
-    <ion-fab-list side="right">
-      <button ion-fab color="dark"><ion-icon name="logo-twitter" (click)="stopCamera()"></ion-icon></button>
-    </ion-fab-list>
-  </ion-fab>
+  <ion-card *ngIf="showGame">
+    <img src="http://www.impericon-mag.com/au/wp-content/uploads/sites/8/2015/03/Architects-wideheader-710x237.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+        Nine Inch Nails Live
+        </ion-card-title>
+      <p>
+        Who is the architect of the Rotterdam.
+      </p>
+      <button ion-button block outline>A. Josje van Veen</button>
+      <button ion-button block outline>B. Abdul Molli</button>
+      <button ion-button block outline>C. Wilfred Remee</button>
+      <button ion-button block outline (click)="openGameSecond()">D. Rem Koolhaas</button>
+    </ion-card-content>
+  </ion-card>
+    <ion-card *ngIf="showGameSecond">
+    <img src="http://www.impericon-mag.com/au/wp-content/uploads/sites/8/2015/03/Architects-wideheader-710x237.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+        Second
+        </ion-card-title>
+      <p>
+        Who is the architect of the Rotterdam.
+      </p>
+      <button ion-button block outline>A. Josje van Veen</button>
+      <button ion-button block outline>B. Abdul Molli</button>
+      <button ion-button block outline>C. Wilfred Remee</button>
+      <button ion-button block outline (click)="openGameThird()">D. Rem Koolhaas</button>
+    </ion-card-content>
+  </ion-card>
+    <ion-card *ngIf="showGameThird">
+    <img src="http://www.impericon-mag.com/au/wp-content/uploads/sites/8/2015/03/Architects-wideheader-710x237.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+        Third
+        </ion-card-title>
+      <p>
+        Who is the architect of the Rotterdam.
+      </p>
+      <button ion-button block outline>A. Josje van Veen</button>
+      <button ion-button block outline>B. Abdul Molli</button>
+      <button ion-button block outline>C. Wilfred Remee</button>
+      <button ion-button block outline (click)="openGameThird()">D. Rem Koolhaas</button>
+    </ion-card-content>
+  </ion-card>
+  <div class="bottom">
+    <ion-fab center middle>
+      <button ion-fab color="danger"><ion-icon name="logo-buffer"></ion-icon></button>
+      <ion-fab-list side="top">
+        <button ion-fab color="primary" (click)="stopCamera()"><ion-icon name="ios-camera"></ion-icon></button>
+      </ion-fab-list>
+      <ion-fab-list side="left">
+        <button ion-fab color="light"><ion-icon name="logo-buffer"></ion-icon></button>
+      </ion-fab-list>
+      <ion-fab-list side="right">
+        <button ion-fab color="light" (click)="openGame()"><ion-icon name="ios-game-controller-b"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
+  </div>
 </ion-content>

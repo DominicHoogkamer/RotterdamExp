@@ -1,0 +1,104 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>intro</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-slides>
+
+<ion-slide >
+    <h2>Please fill in your name</h2>
+    <p>So we can communicate a lot nicer to eachother!</p>
+    <ion-item>
+      <ion-label floating>What is your name?</ion-label>
+      <ion-input [(ngModel)]="personName" type="text"></ion-input>
+    </ion-item>
+    <button ion-button block [disabled]="!personName"(click)="nextPage()">Go to next page</button>
+</ion-slide>
+
+<ion-slide >
+    <h2>How long will you stay {{personName}}?</h2>
+    <p>To plan the best trip for your stay!</p>
+    <ion-item>
+      <ion-label floating>When do you arrive?</ion-label>
+        <ion-datetime [(ngModel)]="arriveDate" displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY "></ion-datetime>
+    </ion-item>
+    <ion-item>  
+      <ion-label floating>When do you leave?</ion-label>
+        <ion-datetime [(ngModel)]="leaveDate" displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY "></ion-datetime>
+    </ion-item>
+    <button ion-button block [disabled]="!arriveDate || !leaveDate"(click)="nextPage()">Go to next page</button>
+  </ion-slide>
+
+<ion-slide >
+    <h2>What would you like to see?</h2>
+  <ion-list no-border>
+
+    <ion-list-header>
+      Outside
+    </ion-list-header>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        Muggle Studies
+      </ion-label>
+      <ion-icon name='body' item-start></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        Muggle Studies
+      </ion-label>
+      <ion-icon name='body' item-start></ion-icon>
+    </ion-item>
+  </ion-list>
+<ion-list no-border>
+
+    <ion-list-header>
+      Indoor
+    </ion-list-header>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        Muggle Studies
+      </ion-label>
+      <ion-icon name='body' item-start></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        Muggle Studies
+      </ion-label>
+      <ion-icon name='body' item-start></ion-icon>
+    </ion-item>
+  </ion-list>
+    <button ion-button block [disabled]="!personName"(click)="nextPage()">Go to next page</button>
+</ion-slide>
+
+<ion-slide class="card-background-page">
+  <ion-card>
+      <img src="https://ionicframework.com/dist/preview-app/www/assets/img/card-saopaolo.png"/>
+      <div class="card-title">São Paulo</div>
+      <div class="card-subtitle">41 Listings</div>
+    </ion-card>
+
+    <ion-card>
+      <img src="https://ionicframework.com/dist/preview-app/www/assets/img/card-saopaolo.png"/>
+      <div class="card-title">Amsterdam</div>
+      <div class="card-subtitle">64 Listings</div>
+    </ion-card>
+    <button ion-button block [disabled]="!personName"(click)="finishIntro()">Go to next page</button>
+</ion-slide>
+
+</ion-slides>
+
+</ion-content>

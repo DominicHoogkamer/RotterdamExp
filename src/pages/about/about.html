@@ -3,27 +3,63 @@
     <ion-title>
       Maps
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="getLocation()">
+        <ion-icon name="navigate"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <sebm-google-map [latitude]="51.924420" [longitude]="4.477733" [zoom]="16">
-          <sebm-google-map-marker [latitude]="51.924420" [longitude]="4.477733" [label]="'B'">
-            <sebm-google-map-info-window [disableAutoPan]="true">
-         Hi, this is the content of the <strong>info window</strong>
-       </sebm-google-map-info-window>
-          </sebm-google-map-marker>
-          <sebm-google-map-marker [latitude]="51.923674" [longitude]="4.470496" [label]="'B'"></sebm-google-map-marker>
-     <sebm-google-map-polyline>
-         <sebm-google-map-polyline-point [latitude]="51.924420" [longitude]="4.477733">
-         </sebm-google-map-polyline-point>
-         <sebm-google-map-polyline-point [latitude]="51.923674" [longitude]="4.470496">
-         </sebm-google-map-polyline-point>
-     </sebm-google-map-polyline>        </sebm-google-map>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+      <sebm-google-map 
+        [latitude]="lat" 
+        [longitude]="lng" 
+        [styles]="styles" 
+        [zoom]="16"
+        [streetViewControl]="false" 
+        [disableDefaultUI]="true">
+        <ng-container *ngIf="!checkIfLocals">
+        <sebm-google-map-marker  *ngFor="let m of locationsArray; let i = index"
+          [latitude]="m.lat"
+          [longitude]="m.lng"
+          iconUrl="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png"
+          (markerClick)="onMarkerClick(m)">
+        </sebm-google-map-marker>
+        </ng-container>
+        <ng-container *ngIf="checkIfLocals">
+        <sebm-google-map-marker  *ngFor="let m of locals; let i = index"
+          [latitude]="m.lat"
+          [longitude]="m.lng"
+          iconUrl="https://www.iconfinder.com/data/icons/ionicons/512/icon-person-128.png"
+          (markerClick)="onMarkerClickLocals(m)">
+        </sebm-google-map-marker>
+        </ng-container>
+
+        <sebm-google-map-marker *ngIf="lat"
+        [latitude]="lat" 
+        [longitude]="lng"
+        label="You are here!"
+        >
+        </sebm-google-map-marker>
+
+      </sebm-google-map >
+    
+    <div class="bottom request">
+      <ion-row>
+        <ion-col width-50>
+          <button block ion-button (click)="localCheck(true)">
+            <ion-icon name="home"></ion-icon>
+             Actractions
+          </button>
+        </ion-col>
+        <ion-col width-50>
+          <button block ion-button (click)="localCheck(false)">
+            <ion-icon name="person"></ion-icon>
+             Locals
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+ </ion-content>

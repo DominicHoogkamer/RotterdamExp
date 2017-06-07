@@ -1,3 +1,9 @@
+import { ProfilePage } from './../pages/profile/profile';
+import { MarkerdetailLocalPage } from './../pages/markerdetail-local/markerdetail-local';
+import { locationModel } from './../models/locations-model';
+import { MarkerdetailPage } from './../pages/markerdetail/markerdetail';
+import { Geolocation } from '@ionic-native/geolocation';
+import { IntroPage } from './../pages/intro/intro';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -14,6 +20,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AgmCoreModule } from 'angular2-google-maps/core'
+import { Camera } from "@ionic-native/camera";
 
 @NgModule({
   declarations: [
@@ -21,13 +28,17 @@ import { AgmCoreModule } from 'angular2-google-maps/core'
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    IntroPage,
+    MarkerdetailPage,
+    MarkerdetailLocalPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCPgvhcA9H5587xCwU3fUgmqKEwSHX6UHE'
+      apiKey: 'AIzaSyCeZ_kQYcx4O4I6j52vBYNsHmUVInZul4U'
     })
   ],
   bootstrap: [IonicApp],
@@ -36,13 +47,21 @@ import { AgmCoreModule } from 'angular2-google-maps/core'
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    IntroPage,
+    MarkerdetailPage,
+    MarkerdetailLocalPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     CameraPreview,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    locationModel,
+    Camera,
+    Geolocation,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    
   ]
 })
 export class AppModule {}

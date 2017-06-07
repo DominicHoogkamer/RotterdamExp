@@ -1,4 +1,13 @@
-ion-app, ion-content {
-background-color: transparent !important;
+// ion-app, ion-content {
+//     background-color: transparent !important;
+// }
+
+page-contact {
+
+    .bottom{
+        position: absolute;
+        bottom: 58px;
+        width: 91%;
+    }
 }
 
