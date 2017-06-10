@@ -11,7 +11,7 @@ import { HomePage } from '../home/home';
 })
 export class TabsPage {
 
-  tab1Root = AboutPage;
+  tab1Root = IntroPage;
   tab2Root = ContactPage;
   tab3Root = ProfilePage;
 

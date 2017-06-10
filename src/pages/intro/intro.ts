@@ -1,3 +1,4 @@
+import { Camera } from '@ionic-native/camera';
 import { AboutPage } from './../about/about';
 import { Slides, ToastController, NavController } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
@@ -12,11 +13,13 @@ export class IntroPage {
   private personName:string = '';
   private arriveDate:string = '';
   private leaveDate:string= '';
+  private profileImg:string = '';
 
 
   constructor(
     private toastCtrl: ToastController,
-    private navCtrl: NavController) {
+    private navCtrl: NavController,
+    public camera: Camera) {
   }
 
 
@@ -59,13 +62,41 @@ export class IntroPage {
 
 
     this.navCtrl.setRoot(AboutPage);
-    console.log([
+
+    let userObject = [
       {
         name: this.personName,
-        arrivedate: this.arriveDate,
-        leavedate: this.leaveDate
+        arriveDate: this.arriveDate,
+        leaveDate: this.leaveDate,
+        profileImg: this.profileImg
       }
-    ]);
+    ] 
+
+    this.setLocalStorage(userObject);
+  }
+
+  takeSelfie() {
+    this.camera.getPicture({
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      correctOrientation: true
+    })
+      .then(
+        imageData => {
+          this.profileImg = 'data:image/jpeg;base64,' + imageData;
+        }
+      )
+      .catch(
+        err => {
+          console.log(err)
+        }
+      );
+  }
+
+  setLocalStorage(user) {
+    localStorage.setItem('userObject', JSON.stringify(user));
+    let string = JSON.parse(localStorage.getItem('userObject'));
+    console.log(string);
   }
 
 

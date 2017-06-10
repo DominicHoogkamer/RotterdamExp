@@ -15,6 +15,7 @@ export class AboutPage {
   private ToastController: any;
   private checkIfLocals: boolean = false;
   private locationsArray: any[];
+  private profileImg: string = ''
 
 
       private locals = [
@@ -188,6 +189,9 @@ export class AboutPage {
       public toastCrtl: ToastController) {
 
     this.getData();
+    let img = JSON.parse(localStorage.getItem('userObject'));
+    this.profileImg = img[0].profileImg;
+    
   }
   
   getData() {
