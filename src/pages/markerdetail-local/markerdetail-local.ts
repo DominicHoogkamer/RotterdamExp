@@ -10,6 +10,7 @@ export class MarkerdetailLocalPage {
   private myRating: number = 2;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    console.log(navParams.get('markerData'));
   }
 
   closeModal() {

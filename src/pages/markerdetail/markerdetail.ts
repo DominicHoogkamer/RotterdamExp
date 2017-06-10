@@ -103,12 +103,13 @@ export class MarkerdetailPage {
 
   onTakePhoto() {
     this.camera.getPicture({
-      encodingType: this.camera.EncodingType.JPEG,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      destinationType: this.camera.DestinationType.DATA_URL,
       correctOrientation: true
     })
       .then(
         imageData => {
-          this.imageUrl = 'ImageData';
+          this.imageUrl = 'data:image/jpeg;base64,' + imageData;
         }
       )
       .catch(

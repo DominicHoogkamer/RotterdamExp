@@ -24,16 +24,16 @@
         <sebm-google-map-marker  *ngFor="let m of locationsArray; let i = index"
           [latitude]="m.lat"
           [longitude]="m.lng"
-          iconUrl="../../assets/markers/pointer_local.png"
-          (markerClick)="onMarkerClick(m)">
+          iconUrl="assets/markers/pointer_local.png"
+          (markerClick)="onMarkerClickLocals(m)">
         </sebm-google-map-marker>
         </ng-container>
         <ng-container *ngIf="checkIfLocals">
         <sebm-google-map-marker  *ngFor="let m of locals; let i = index"
           [latitude]="m.lat"
           [longitude]="m.lng"
-          iconUrl="../../assets/markers/pointer_building.png"
-          (markerClick)="onMarkerClickLocals(m)">
+          iconUrl="assets/markers/pointer_building.png"
+          (markerClick)="onMarkerClick(m)">
         </sebm-google-map-marker>
         </ng-container>
 

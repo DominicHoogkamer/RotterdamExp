@@ -12,10 +12,10 @@ import { NavController, ModalController, LoadingController, ToastController } fr
 })
 
 export class AboutPage {
-        ToastController: any;
-
+  private ToastController: any;
   private checkIfLocals: boolean = false;
   private locationsArray: any[];
+
 
       private locals = [
 	  {
@@ -44,7 +44,6 @@ export class AboutPage {
   lat: number;
   lng: number;
 
-  icon: string = 'http://www.myiconfinder.com/uploads/iconsets/256-256-a5485b563efc4511e0cd8bd04ad0fe9e.png'
 
   public styles = [
     {
@@ -180,8 +179,6 @@ export class AboutPage {
         ]
     }
 ]
-
-
 
   constructor(
       public modalCtrl: ModalController, 

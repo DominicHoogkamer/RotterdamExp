@@ -5,7 +5,7 @@
     <ion-title>markerdetail</ion-title>
     <ion-buttons start>
       <button ion-button (click)="closeModal()">
-       Clear
+       Back
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -16,6 +16,8 @@
   <ion-img width="100%" height="200px" src="http://images.huffingtonpost.com/2015-03-20-1426853494-9761329-iStock_000026246607_Large.jpg"></ion-img>
   <ion-grid padding>
     <h2>Chambre et vue imprenable sur Paris</h2>
+    <p>dolor sit amet, consectetur adipiscing elit, 
+      sed do eiusmod tempor incididunt ut labore et dolore magna </p>
     <ion-row>
       <ion-icon *ngIf="myRating>=1" class="star" name="star"></ion-icon>
       <ion-icon *ngIf="myRating>=2" class="star" name="star"></ion-icon>
@@ -28,7 +30,7 @@
       <ion-icon *ngIf="myRating<=3" class="star" name="star-outline"></ion-icon>
       <ion-icon *ngIf="myRating<=4" class="star" name="star-outline"></ion-icon>
     </ion-row>    
-    <ion-row>
+    <ion-row style="margin-bottom: 20px">
       <ion-col>
         <button
           ion-button
@@ -54,14 +56,11 @@
         </button>
       </ion-col>
     </ion-row>
-
-    <ion-row>
-      <ion-col text-center>
+      <div *ngIf="imageUrl == ''">
         <h5>Take a Photo!</h5>
         <p>Remember this place and share it with your friends!</p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
+      </div>
+    <ion-row *ngIf="imageUrl == ''">
       <ion-col>
         <button
         ion-button
@@ -77,22 +76,22 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <img [src]="imageUrl">
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button
-        ion-button
-        block
-        color="secondary"
-        type="button"
-        (click)="closeModal()"
-        >
-        Go back to map
-        </button>
+        <img *ngIf="!imageUrl == ''" [src]="imageUrl" style="margin: 20px 0 40px 0">
       </ion-col>
     </ion-row>
   </ion-grid>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <p>$139 per persoon</p>
+      </ion-col>
+      <ion-col>
+        <button ion-button block primary>Koop Ticket</button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,7 +1,24 @@
+.toolbar-background-md {
+    background: #FFF !important;
+}
+
 page-markerdetail-local {
+
+    ion-img{
+        margin-bottom: 286px;
+    }
+
     ion-grid{
         height: 360px;
     }
+
+    .social-share{
+        border-bottom: 1px solid #dedede;
+        border-top: 1px solid #dedede;
+        padding: 20px 0 20px 0;
+        margin-bottom: 20px;
+    }
+    
 
     .ion-ios-star{
         color: #feb234;
