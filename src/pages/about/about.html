@@ -24,7 +24,7 @@
         <sebm-google-map-marker  *ngFor="let m of locationsArray; let i = index"
           [latitude]="m.lat"
           [longitude]="m.lng"
-          iconUrl="https://www.gstatic.com/images/branding/product/1x/maps_64dp.png"
+          iconUrl="../../assets/markers/pointer_local.png"
           (markerClick)="onMarkerClick(m)">
         </sebm-google-map-marker>
         </ng-container>
@@ -32,7 +32,7 @@
         <sebm-google-map-marker  *ngFor="let m of locals; let i = index"
           [latitude]="m.lat"
           [longitude]="m.lng"
-          iconUrl="https://www.iconfinder.com/data/icons/ionicons/512/icon-person-128.png"
+          iconUrl="../../assets/markers/pointer_building.png"
           (markerClick)="onMarkerClickLocals(m)">
         </sebm-google-map-marker>
         </ng-container>
@@ -49,13 +49,23 @@
     <div class="bottom request">
       <ion-row>
         <ion-col width-50>
-          <button block ion-button (click)="localCheck(true)">
+          <ion-avatar item-start>
+            <img style="width:66px;" src="https://s-media-cache-ak0.pinimg.com/originals/d3/69/d9/d369d9056795f553e244da66e8297cca.png">
+            <ion-row>
+              <ion-icon  class="star" name="star-outline"></ion-icon>
+              <ion-icon  class="star" name="star-outline"></ion-icon>
+              <ion-icon  class="star" name="star-outline"></ion-icon>
+              <ion-icon  class="star" name="star-outline"></ion-icon>
+              <ion-icon  class="star" name="star-outline"></ion-icon>
+            </ion-row>  
+          </ion-avatar>
+        </ion-col>
+        <ion-col width-50>
+          <button block ion-button small (click)="localCheck(true)">
             <ion-icon name="home"></ion-icon>
              Actractions
           </button>
-        </ion-col>
-        <ion-col width-50>
-          <button block ion-button (click)="localCheck(false)">
+          <button block ion-button small (click)="localCheck(false)">
             <ion-icon name="person"></ion-icon>
              Locals
           </button>
