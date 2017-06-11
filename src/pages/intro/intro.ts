@@ -1,11 +1,14 @@
+import { DataProvider } from './../../providers/data/data';
 import { Camera } from '@ionic-native/camera';
 import { AboutPage } from './../about/about';
-import { Slides, ToastController, NavController } from 'ionic-angular';
+import { Slides, ToastController, NavController, App } from 'ionic-angular';
 import { Component, ViewChild } from '@angular/core';
+
 
 @Component({
   selector: 'page-intro',
   templateUrl: 'intro.html',
+  
 })
 export class IntroPage {
   @ViewChild(Slides) slides: Slides;
@@ -19,11 +22,16 @@ export class IntroPage {
   constructor(
     private toastCtrl: ToastController,
     private navCtrl: NavController,
-    public camera: Camera) {
+    public camera: Camera,
+    private data: DataProvider,
+    private app: App) {
+
+
   }
 
 
   ionViewDidLoad() {
+    this.app._setDisableScroll(true);
     this.slides.lockSwipes(true);
 
     let tabBar = document.querySelector('.tabbar');
@@ -47,7 +55,7 @@ export class IntroPage {
     const toast = this.toastCtrl.create({
       message: message,
       duration: 1500,
-      position: 'bottom'
+      position: 'top'
     });
     toast.present();    
 

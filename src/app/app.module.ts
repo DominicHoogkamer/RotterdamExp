@@ -21,6 +21,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AgmCoreModule } from 'angular2-google-maps/core'
 import { Camera } from "@ionic-native/camera";
+import { DataProvider } from '../providers/data/data';
+import { HttpModule } from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { Camera } from "@ionic-native/camera";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCeZ_kQYcx4O4I6j52vBYNsHmUVInZul4U'
@@ -61,7 +64,7 @@ import { Camera } from "@ionic-native/camera";
     Camera,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    
+    DataProvider,
   ]
 })
 export class AppModule {}
