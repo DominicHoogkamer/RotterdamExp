@@ -1,3 +1,4 @@
+import { Globals } from './global';
 import { ProfilePage } from './../pages/profile/profile';
 import { MarkerdetailLocalPage } from './../pages/markerdetail-local/markerdetail-local';
 import { locationModel } from './../models/locations-model';
@@ -62,6 +63,7 @@ import { HttpModule } from "@angular/http";
     CameraPreview,
     locationModel,
     Camera,
+    Globals,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,

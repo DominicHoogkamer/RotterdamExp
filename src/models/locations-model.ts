@@ -21,6 +21,13 @@ export class locationModel {
 		  lng: 4.479632,
 		  label: 'C',
 		  draggable: true
+	  },
+	  {
+          title: 'What would you rate this attraction?4',
+		  lat: 51.925581,
+		  lng: 4.474161,
+		  label: 'C',
+		  draggable: true
 	  }
   ]
     

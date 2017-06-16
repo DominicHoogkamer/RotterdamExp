@@ -1,4 +1,28 @@
+.tabs-md .tabbar{
+    background: #FFF;
+}
+
 page-about {
+
+    .toolbar-background-md {
+        background: #2C88FF !important;
+        color: #FFF !important;
+    }
+
+    .filter-buttons{
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-icon{
+        font-size: 30px;
+        color: #FFF;
+    }
+
+    .toolbar-title-md {
+        color: #FFF;
+    }
+
     sebm-google-map{
         height: 100vh;
     }

@@ -1,3 +1,4 @@
+import { Globals } from './../../app/global';
 import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicPage, NavController, NavParams, ViewController, AlertController, ToastController } from 'ionic-angular';
@@ -11,13 +12,19 @@ export class MarkerdetailPage {
 
   private myRating: number;
   imageUrl: string = '';
+  private dataArray;
 
   constructor(
     public viewCtrl: ViewController, 
     public alertCtrl: AlertController, 
     public params: NavParams,
     public toastCtrl: ToastController,
-    public camera: Camera) {
+    public camera: Camera,
+    public navParams: NavParams,
+    public globals: Globals) {
+
+      this.dataArray = navParams.get('markerData');
+      console.log(this.dataArray);
 
   }
 
@@ -117,6 +124,23 @@ export class MarkerdetailPage {
           console.log(err)
         }
       );
+  }
+
+  getLocation(){
+    let lat = this.navParams.get('markerData').lat;
+    let lng = this.navParams.get('markerData').lng;
+    let title = this.navParams.get('markerData').title;
+    this.viewCtrl.dismiss({ 'lat': lat, 'lng': lng, 'title': title });
+  }
+
+  buyTicket() {
+    let ticketTitle = this.navParams.get('markerData').title;
+
+    if (this.globals.ticketArray.indexOf(ticketTitle) !== -1){
+    } else {
+        this.globals.ticketArray.push(ticketTitle);
+    }
+
   }
 
 

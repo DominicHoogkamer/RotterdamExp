@@ -5,11 +5,19 @@
 page-markerdetail-local {
 
     ion-img{
-        margin-bottom: 286px;
+        margin-bottom: 202px;
     }
 
     ion-grid{
         height: 360px;
+    }
+
+    .toolbar-background-md {
+        background: #01b43c !important;
+        color: #FFF !important;
+    }
+    .toolbar-title-md {
+        color: #FFF;
     }
 
     .social-share{

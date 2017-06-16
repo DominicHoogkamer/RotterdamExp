@@ -26,60 +26,131 @@
 
     <ion-row>
       <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="star"></ion-icon>
-          <div>12 Likes</div>
+        <button ion-button icon-left clear small style="height: 4.1em;" >
+            <img src="assets/img/coin_rp.png"  *ngIf="RPamount>=1" alt="" style="width: auto; height: 40px; margin-bottom: 10px">
+            <img src="assets/img/coin_rp.png"  *ngIf="RPamount>=2"alt="" style="width: auto; height: 40px; margin-bottom: 10px">
+            <img src="assets/img/coin_rp.png"  *ngIf="RPamount>=3" alt="" style="width: auto; height: 40px; margin-bottom: 10px">
+            <img src="assets/img/coin_rp.png"  *ngIf="RPamount>=4" alt="" style="width: auto; height: 40px; margin-bottom: 10px">
+            <img src="assets/img/coin_rp.png"  *ngIf="RPamount>=5" alt="" style="width: auto; height: 40px; margin-bottom: 10px">
         </button>
+          <button outline block ion-button (click)="tradeCoupon()">Trade stars for coupons!</button>
+
       </ion-col>
     </ion-row>
 
   </ion-card>
 
+    <ion-segment [(ngModel)]="typeCard">
+    <ion-segment-button value="activecoupons">
+      Active Coupons
+    </ion-segment-button>
+    <ion-segment-button value="usedcoupons">
+      Used Coupons
+    </ion-segment-button>
+  </ion-segment>
 
-  <ion-list>
-    <ion-list-header>
-    Active Coupons
-  </ion-list-header>
-  <ion-item-sliding>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
-      </ion-avatar>
-      <h2>Witte de wit</h2>
-    </ion-item>
-    <ion-item-options side="right">
-      <button ion-button color="primary">
-        <ion-icon name="mail"></ion-icon>
-        See Coupon
-      </button>
-      <button ion-button color="danger">
-        <ion-icon name="mail"></ion-icon>
-        Remove
-      </button>      
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
-  <ion-list>
-    <ion-list-header>
-    Used Coupons
-  </ion-list-header>
-  <ion-item-sliding>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
-      </ion-avatar>
-      <h2>Vapiano</h2>
-    </ion-item>
-    <ion-item-options side="right">
+<div [ngSwitch]="typeCard">
+    <ion-list *ngSwitchCase="'activecoupons'">
+      <ion-list-header>
+      Active Coupons
+    </ion-list-header>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
+        </ion-avatar>
+        <h2>Witte de wit</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="mail"></ion-icon>
+          See Coupon
+        </button>
+        <button ion-button color="danger">
+          <ion-icon name="mail"></ion-icon>
+          Remove
+        </button>      
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
-      <button ion-button color="danger">
-        <ion-icon name="mail"></ion-icon>
-        Remove
-      </button>      
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
 
-  <button block ion-button (click)="tradeCoupon()">Trade stars for coupons!</button>
+    <ion-list *ngSwitchCase="'usedcoupons'">
+      <ion-list-header>
+      Used Coupons
+    </ion-list-header>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
+        </ion-avatar>
+        <h2>Vapiano</h2>
+      </ion-item>
+      <ion-item-options side="right">
+
+        <button ion-button color="danger">
+          <ion-icon name="mail"></ion-icon>
+          Remove
+        </button>      
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</div>
+
+    <ion-segment [(ngModel)]="typeTicket">
+    <ion-segment-button value="activetickets">
+      Active Tickets
+    </ion-segment-button>
+    <ion-segment-button value="usedtickets">
+      Used Tickets
+    </ion-segment-button>
+  </ion-segment>
+
+<div [ngSwitch]="typeTicket">
+    <ion-list *ngSwitchCase="'activetickets'">
+      <ion-list-header>
+      Active Tickets
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let ticket of ticketArray;">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
+        </ion-avatar>
+        <h2>{{ ticket }}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+          <ion-icon name="mail"></ion-icon>
+          See Ticket
+        </button>
+        <button ion-button color="danger" (click)="removeTicket(ticket)">
+          <ion-icon name="mail"></ion-icon>
+          Remove
+        </button>      
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+    <ion-list *ngSwitchCase="'usedtickets'">
+      <ion-list-header>
+      Used Tickets
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let removedTicket of removedTicketArray">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
+        </ion-avatar>
+        <h2>{{ removedTicket }}</h2>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</div>
+
+
+
+
+
+
 
 </ion-content>
