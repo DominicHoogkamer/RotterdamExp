@@ -5,13 +5,28 @@
 
 <ion-slides>
 
-<ion-slide >
+<ion-slide padding>
     <img src="assets/img/Icon_Slide4.png" alt="">
     <h2>Please fill in your name</h2>
     <p>So we can communicate a lot nicer to eachother!</p>
     <ion-item padding>
       <ion-label floating>What is your name?</ion-label>
       <ion-input [(ngModel)]="personName" type="text"></ion-input>
+    </ion-item>
+    <ion-footer>
+      <button ion-button block [disabled]="!personName"(click)="nextPage()" class="button-intro">Go to next page</button>
+    </ion-footer>
+</ion-slide>
+
+<ion-slide padding>
+    <img src="assets/img/Icon_Slide4.png" alt="">
+    <h2>Tell us where you are from?</h2>
+    <p>So we can translate the app for you!</p>
+    <ion-item>
+      <ion-label>Country</ion-label>
+      <ion-select [(ngModel)]="country" >
+        <ion-option *ngFor="let country of countrySelection" [value]="country">{{ country.name }}</ion-option>
+      </ion-select>
     </ion-item>
     <ion-footer>
       <button ion-button block [disabled]="!personName"(click)="nextPage()" class="button-intro">Go to next page</button>
@@ -94,15 +109,15 @@
 </ion-slide>
 
 <ion-slide class="card-background-page" padding>
-      <h2>Choose one Activity :)</h2>
-  <ion-card>
-      <img src="http://www.holland.com/upload_mm/2/0/8/2769_fullimage_rotterdam%20museum%20boijmans%20van%20beuningenVIT.jpg.jpg"/>
+      <h2>Choose one Activity!</h2>
+  <ion-card (click)="finishIntro()">
+      <img  src="http://www.holland.com/upload_mm/2/0/8/2769_fullimage_rotterdam%20museum%20boijmans%20van%20beuningenVIT.jpg.jpg"/>
       <div class="card-title">Museum Boijmans</div>
       <div class="card-subtitle">Art, Museum</div>
     </ion-card>
 
-    <ion-card>
-      <img src="https://www.rotown.nl/wp-content/uploads/2015/05/Rotown-Photo-Credit-Jan-Bijl.jpg"/>
+    <ion-card (click)="finishIntro()">
+      <img  src="https://www.rotown.nl/wp-content/uploads/2015/05/Rotown-Photo-Credit-Jan-Bijl.jpg"/>
       <div class="card-title">Rotown</div>
       <div class="card-subtitle">Poppodium, Café en Restaurant</div>
     </ion-card>

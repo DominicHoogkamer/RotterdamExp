@@ -24,6 +24,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core'
 import { Camera } from "@ionic-native/camera";
 import { DataProvider } from '../providers/data/data';
 import { HttpModule } from "@angular/http";
+import { CountryServiceProvider } from '../providers/country-service/country-service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,10 @@ import { HttpModule } from "@angular/http";
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      scrollAssist: false, 
+      autoFocusAssist: false
+    }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCeZ_kQYcx4O4I6j52vBYNsHmUVInZul4U'
     })
@@ -63,10 +67,12 @@ import { HttpModule } from "@angular/http";
     CameraPreview,
     locationModel,
     Camera,
+    CountryServiceProvider,
     Globals,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
+    CountryServiceProvider,
   ]
 })
 export class AppModule {}

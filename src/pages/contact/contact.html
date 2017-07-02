@@ -1,9 +1,9 @@
 <ion-content padding>
   <ion-card *ngIf="showGame">
-    <img src="http://www.impericon-mag.com/au/wp-content/uploads/sites/8/2015/03/Architects-wideheader-710x237.jpg"/>
+    <img src="http://i2.cdn.cnn.com/cnnnext/dam/assets/170221125124-rotterdam-10--floating-architecture-b-super-169.jpg"/>
     <ion-card-content>
       <ion-card-title>
-        Nine Inch Nails Live
+        Question!?
         </ion-card-title>
       <p>
         Who is the architect of the Rotterdam.
@@ -15,35 +15,62 @@
     </ion-card-content>
   </ion-card>
     <ion-card *ngIf="showGameSecond">
-    <img src="http://www.impericon-mag.com/au/wp-content/uploads/sites/8/2015/03/Architects-wideheader-710x237.jpg"/>
+    <img src="https://media-cdn.tripadvisor.com/media/photo-s/0d/21/66/06/le-pont-guillaume.jpg"/>
     <ion-card-content>
       <ion-card-title>
-        Second
+        Question!?
         </ion-card-title>
       <p>
-        Who is the architect of the Rotterdam.
+        How do people call the Willemsbrug asswell??
       </p>
-      <button ion-button block outline>A. Josje van Veen</button>
-      <button ion-button block outline>B. Abdul Molli</button>
-      <button ion-button block outline>C. Wilfred Remee</button>
-      <button ion-button block outline (click)="openGameThird()">D. Rem Koolhaas</button>
+      <button ion-button block outline>A. The Red Bridge</button>
+      <button ion-button block outline>B. The Golden Bridge</button>
+      <button ion-button block outline>C.THe Golden Bridge</button>
+      <button ion-button block outline (click)="openGameThird()">D. The Golden Gate bridge</button>
     </ion-card-content>
   </ion-card>
     <ion-card *ngIf="showGameThird">
-    <img src="http://www.impericon-mag.com/au/wp-content/uploads/sites/8/2015/03/Architects-wideheader-710x237.jpg"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Fikkie_Rotterdam.jpg/1280px-Fikkie_Rotterdam.jpg"/>
     <ion-card-content>
       <ion-card-title>
-        Third
+        Question!?
         </ion-card-title>
       <p>
-        Who is the architect of the Rotterdam.
+        In Rotterdam dogs are not allowed to bark.
       </p>
-      <button ion-button block outline>A. Josje van Veen</button>
-      <button ion-button block outline>B. Abdul Molli</button>
-      <button ion-button block outline>C. Wilfred Remee</button>
-      <button ion-button block outline (click)="openGameThird()">D. Rem Koolhaas</button>
+      <button ion-button block outline>A. False</button>
+      <button ion-button block outline (click)="openGame()">B. True</button>
     </ion-card-content>
   </ion-card>
+
+
+  <ion-card *ngIf="infoScreen">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Rotterdam_Cube_House_street_view.jpg/1200px-Rotterdam_Cube_House_street_view.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+        Cube Houses
+        </ion-card-title>
+      <p>
+        Cube houses (Dutch: Kubuswoningen) are a set of innovative houses built in Rotterdam and Helmond in the Netherlands, designed by architect Piet Blom and based on the concept of "living as an urban roof": high density housing with sufficient space on the ground level, since its main purpose is to optimise the space inside.
+      </p>
+      <button ion-button block outline (click)="openInfoScreen()">Oke Thanks!</button>
+    </ion-card-content>
+  </ion-card>
+
+    <ion-card *ngIf="questScreen">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Rotterdam_Cube_House_street_view.jpg/1200px-Rotterdam_Cube_House_street_view.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+        Make a photo for instagram!
+        </ion-card-title>
+      <p>
+        Make a beautifull photo of the qubic houses and post it on instagram with #QubicHouses #RotterdamPartners #Rotterdam to earn Rotterdam Points
+      </p>
+      <button ion-button block outline (click)="openQuest()">Make Picture</button>
+      <button ion-button block outline (click)="openQuest()">No thanks</button>
+    </ion-card-content>
+  </ion-card>
+
   <div class="bottom">
     <ion-fab center middle>
       <button ion-fab color="danger"><ion-icon name="logo-buffer"></ion-icon></button>
@@ -51,10 +78,10 @@
         <button ion-fab color="light" (click)="openGame()"><ion-icon name="ios-game-controller-b"></ion-icon></button>
       </ion-fab-list>
       <ion-fab-list side="left">
-        <button ion-fab color="light" (click)="openGame()"><ion-icon name="ios-game-controller-b"></ion-icon></button>
+        <button ion-fab color="light" (click)="openInfoScreen()"><ion-icon name="information"></ion-icon></button>
       </ion-fab-list>
       <ion-fab-list side="right">
-        <button ion-fab color="light" (click)="openGame()"><ion-icon name="ios-game-controller-b"></ion-icon></button>
+        <button ion-fab color="light" (click)="openQuest()"><ion-icon name="logo-instagram"></ion-icon></button>
       </ion-fab-list>
     </ion-fab>
   </div>

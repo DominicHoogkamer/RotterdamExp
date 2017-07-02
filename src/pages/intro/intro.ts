@@ -1,3 +1,4 @@
+import { CountryServiceProvider } from './../../providers/country-service/country-service';
 import { DataProvider } from './../../providers/data/data';
 import { Camera } from '@ionic-native/camera';
 import { AboutPage } from './../about/about';
@@ -17,6 +18,8 @@ export class IntroPage {
   private arriveDate:string = '';
   private leaveDate:string= '';
   private profileImg:string = '';
+  private country:string = '';
+  private countrySelection: any;
 
 
   constructor(
@@ -24,14 +27,23 @@ export class IntroPage {
     private navCtrl: NavController,
     public camera: Camera,
     private data: DataProvider,
-    private app: App) {
+    private app: App,
+    private countrys: CountryServiceProvider) {
 
+      this.loadCountrys();
 
+  }
+
+  loadCountrys(){
+    this.countrys.load()
+      .then(data => {
+        this.countrySelection = data;
+        console.log(this.countrySelection);
+      })
   }
 
 
   ionViewDidLoad() {
-    this.app._setDisableScroll(true);
     this.slides.lockSwipes(true);
 
     let tabBar = document.querySelector('.tabbar');
@@ -74,6 +86,7 @@ export class IntroPage {
     let userObject = [
       {
         name: this.personName,
+        country: this.country,
         arriveDate: this.arriveDate,
         leaveDate: this.leaveDate,
         profileImg: this.profileImg

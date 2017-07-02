@@ -11,6 +11,8 @@ export class ContactPage {
   private showGame: boolean = false;
   private showGameSecond: boolean = false;
   private showGameThird: boolean = false;
+  private infoScreen: boolean = false;
+  private questScreen: boolean = false;
 
   private cameraPreviewOpts: CameraPreviewOptions = {
     x: 0,
@@ -25,13 +27,49 @@ export class ContactPage {
   };
 
   constructor(public navCtrl: NavController, private cameraPreview: CameraPreview, public viewCtrl: ViewController) {
-        this.cameraPreview.startCamera(this.cameraPreviewOpts).then(
-  (res) => {
-    console.log(res)
-  },
-  (err) => {
-    console.log(err)
-  });
+    this.cameraPreview.startCamera(this.cameraPreviewOpts).then(
+      (res) => {
+        console.log(res)
+      },
+      (err) => {
+        console.log(err)
+      });
+
+
+  }
+
+  ionViewWillEnter(){
+      let cameraTransparent = document.querySelectorAll('ion-app, ion-content');
+      for(let i = 0; i < cameraTransparent.length; i++) {
+        cameraTransparent[i].classList.add('transparent');
+      }
+  }
+
+  ionViewWillLeave(){
+      let cameraTransparent = document.querySelectorAll('ion-app, ion-content');
+      for(let i = 0; i < cameraTransparent.length; i++) {
+        cameraTransparent[i].classList.remove('transparent');
+      }
+      
+  }
+
+openInfoScreen() {
+  if(this.infoScreen != true) {
+    this.infoScreen = true
+    this.showGame = false
+  } else {
+    this.infoScreen = false
+  }
+}
+
+openQuest() {
+ if(this.questScreen != true) {
+   this.questScreen = true
+   this.infoScreen = false
+   this.showGame = false
+ } else {
+   this.questScreen = false
+ }
 }
 
 openGame() {
@@ -41,6 +79,7 @@ openGame() {
     this.showGameThird = false;
   } else {
     this.showGame = true;
+    this.infoScreen = false;
   }
 }
 

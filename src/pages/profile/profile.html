@@ -12,16 +12,19 @@
 
     <ion-item>
       <ion-avatar item-start>
-        <img src="https://ionicframework.com/dist/preview-app/www/assets/img/marty-avatar.png">
+        <img [src]="avatar">
       </ion-avatar>
-      <h2>Dominic Hoogkamer</h2>
-      <p>The Netherlands</p>
+      <h2>{{ username }}</h2>
+      <p>{{ country }}</p>
     </ion-item>
 
     <img src="https://ionicframework.com/dist/preview-app/www/assets/img/card-saopaolo.png">
 
     <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?! Whoa. This is heavy.</p>
+      <p>{{ username}} is a tourist from {{ country }} that likes art and visits attractions that are not in the toplisted tourguides.{{ username}}
+        is also someone who likes an adventure and a beer. Also {{ username }} arrives in Rotterdam at {{ arriveDate}} and leaves Rotterdam again at {{ leaveDate }}
+        and leaves Rotterdam at {{ leaveData}}
+      </p>
     </ion-card-content>
 
     <ion-row>
@@ -54,19 +57,19 @@
       <ion-list-header>
       Active Coupons
     </ion-list-header>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let coupon of couponArray;">
       <ion-item>
         <ion-avatar item-start>
           <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
         </ion-avatar>
-        <h2>Witte de wit</h2>
+        <h2>{{ coupon }}</h2>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="primary">
           <ion-icon name="mail"></ion-icon>
           See Coupon
         </button>
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="removeCoupon(coupon)">
           <ion-icon name="mail"></ion-icon>
           Remove
         </button>      
@@ -79,12 +82,12 @@
       <ion-list-header>
       Used Coupons
     </ion-list-header>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let removedCoupons of removedCoupons">
       <ion-item>
         <ion-avatar item-start>
           <img src="https://www.scandichotels.com/imagevault/publishedmedia/qn6infvg30381stkubky/scandic-sundsvall-city-restaurant-verket-10.jpg">
         </ion-avatar>
-        <h2>Vapiano</h2>
+        <h2>{{ removedCoupons }}</h2>
       </ion-item>
       <ion-item-options side="right">
 

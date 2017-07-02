@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Local</ion-title>
+    <ion-title>{{ title }}</ion-title>
     <ion-buttons start>
       <button ion-button (click)="closeModal()">
        Back
@@ -13,16 +13,11 @@
 
 
 <ion-content>
-  <ion-img width="100%" height="200px" src="https://www.contentedtraveller.com/wp-content/uploads/2016/02/Travel-Writers-Share-Their-Experiences-with-Airbnb-1.jpg"></ion-img>
+  <ion-img width="100%" height="200px" [src]="img"></ion-img>
   
   <ion-grid padding>
-    <h2>Cave Peak Sky</h2>
-    <p><a href="">Lorem ipsum</a>dolor sit amet, consectetur adipiscing elit, 
-      sed do eiusmod tempor incididunt ut labore et dolore magna 
-      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h2>{{ title }}</h2>
+    <p>{{ desc }}</p>
 
       <ion-list>
           <button ion-button outline color="secondary" clear-outline block (click)="getLocation()">Get Direction</button>
@@ -31,8 +26,8 @@
       <img src="https://s-media-cache-ak0.pinimg.com/originals/d3/69/d9/d369d9056795f553e244da66e8297cca.png">
     </ion-avatar>
     <h2>Finn</h2>
-    <h3>Don't Know What To Do!</h3>
-    <p>I've had a pretty messed up day. If we just...</p>
+    <h3>You like my experience in Rotterdam?</h3>
+    <p>Dont hesitate to contact me!</p>
     <button ion-button outline color="secondary" clear-outline block>Neem contact op</button>
   </ion-item>
 </ion-list>
@@ -44,16 +39,12 @@
   <h5>Soortgelijke locals in Rotterdam</h5>
   <ion-slides>
     <ion-slide>
-      <img src="https://www.contentedtraveller.com/wp-content/uploads/2016/02/Travel-Writers-Share-Their-Experiences-with-Airbnb-1.jpg">
-      <p>Create your own craft cocktail</p>
+      <img src="http://dailylin.nl/wp-content/uploads/2014/04/IMG_0406-1024x682.jpg">
+      <p>Yoga Lessons</p>
     </ion-slide>
     <ion-slide>
-      <img src="https://www.contentedtraveller.com/wp-content/uploads/2016/02/Travel-Writers-Share-Their-Experiences-with-Airbnb-1.jpg">
-      <p>Create your own craft cocktail</p>
-    </ion-slide>
-    <ion-slide>
-      <img src="https://www.contentedtraveller.com/wp-content/uploads/2016/02/Travel-Writers-Share-Their-Experiences-with-Airbnb-1.jpg">
-      <p>Create your own craft cocktail</p>
+      <img src="http://www.dutchgraffiti.com/wp-content/uploads/2016/06/20160610graffiti-rotterdam05.jpg">
+      <p>Graffity Tour Rotterdam</p>
     </ion-slide>
   </ion-slides>
   </ion-grid>
@@ -68,7 +59,7 @@
         <p style="color: #FFF;">€139 per persoon</p>
       </ion-col>
       <ion-col>
-        <button ion-button block color="light" primary>Reserveer</button>
+        <button ion-button block color="light" primary (click)="buyTicket()">Reserveer</button>
       </ion-col>
     </ion-row>
   </ion-toolbar>

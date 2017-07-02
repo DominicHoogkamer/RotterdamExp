@@ -3,9 +3,13 @@ page-markerdetail {
         height: 360px;
     }
 
-    .toolbar-background-md {
+    .toolbar-background {
     background: #FF6A69 !important;
     color: #FFF !important;
+
+        .toolbar-title-md {
+            color: #FFF !important;
+        }
     }
 
     .footer{

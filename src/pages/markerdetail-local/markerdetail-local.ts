@@ -8,10 +8,20 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class MarkerdetailLocalPage {
 
+  private title: String = '';
+  private desc: String = '';
+  private img: String = '';
+
+
   private myRating: number = 2;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public globals: Globals) {
     console.log(navParams.get('markerData'));
+    this.title = this.navParams.get('markerData').title;
+    this.desc = this.navParams.get('markerData').description;
+    this.img = this.navParams.get('markerData').imgUrl;
+
+
   }
 
   closeModal() {
@@ -31,8 +41,8 @@ export class MarkerdetailLocalPage {
   getLocation(){
     let lat = this.navParams.get('markerData').lat;
     let lng = this.navParams.get('markerData').lng;
-    let title = this.navParams.get('markerData').title;
-    this.viewCtrl.dismiss({ 'lat': lat, 'lng': lng, 'title': title });
+    this.title = this.navParams.get('markerData').title;
+    this.viewCtrl.dismiss({ 'lat': lat, 'lng': lng, 'title': this.title });
   }
 
 

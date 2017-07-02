@@ -1,6 +1,6 @@
 import { Globals } from './../../app/global';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { ActionSheetController } from 'ionic-angular';
 
 @Component({
   selector: 'page-profile',
@@ -11,18 +11,42 @@ export class ProfilePage {
   typeCard: string = "activecoupons"
   typeTicket: string = "activetickets";
   RPamount: number;
+  username: string;
+  country: string;
+  arriveDate: string;
+  leaveData: string;
+  avatar: any = 'https://s-media-cache-ak0.pinimg.com/originals/b1/bb/ec/b1bbec499a0d66e5403480e8cda1bcbe.png';
 
   private ticketArray;
   private removedTicketArray;
 
-  constructor(public actionsSheetCtrl: ActionSheetController, public globals : Globals) {
+  private couponArray;
+  private removedCoupons;
+
+  constructor(public actionsSheetCtrl: ActionSheetController, public globals: Globals) {
     this.RPamount = globals.rpAmount;
 
     this.ticketArray = globals.ticketArray;
     this.removedTicketArray = globals.RemovedTicketsArray;
 
+    this.couponArray = globals.couponArray;
+    this.removedCoupons = globals.RemovedCouponsArray;
+
+    if (localStorage.getItem('userObject')) {
+      let data = JSON.parse(localStorage.getItem('userObject'));
+
+      this.username = data[0].name;
+      this.country = data[0].country.name;
+      this.arriveDate = data[0].arriveDate;
+      this.leaveData = data[0].leaveDate;
+      if (!data[0].profileImg == null) {
+        this.avatar = data[0].profileImg;
+      }
+    }
+
+
   }
-  
+
 
   tradeCoupon() {
     let actionSheet = this.actionsSheetCtrl.create({
@@ -32,22 +56,22 @@ export class ProfilePage {
           text: 'Coupon RoTown 10% discount on everything',
           role: 'destructive',
           handler: () => {
-            if (this.globals.ticketArray.indexOf('RoTown') !== -1){
+            if (this.globals.couponArray.indexOf('RoTown') !== -1) {
             } else {
-                this.globals.ticketArray.push('RoTown');
-                this.globals.rpAmount = 0;
+              this.globals.couponArray.push('RoTown');
+              this.globals.rpAmount = 0;
             }
           }
-        },{
+        }, {
           text: 'Coupon Blijdorp get 50% off an entrance ticket',
           handler: () => {
-            if (this.globals.ticketArray.indexOf('Blijdorp') !== -1){
+            if (this.globals.couponArray.indexOf('Blijdorp') !== -1) {
             } else {
-                this.globals.ticketArray.push('Blijdorp');
-                this.RPamount = 0;
+              this.globals.couponArray.push('Blijdorp');
+              this.RPamount = 0;
             }
           }
-        },{
+        }, {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
@@ -59,11 +83,19 @@ export class ProfilePage {
     actionSheet.present();
   }
 
-  removeTicket(title:string) {
+  removeTicket(title: string) {
     let index: number = this.globals.ticketArray.indexOf(title);
     if (index !== -1) {
       this.globals.RemovedTicketsArray.push(title);
       this.globals.ticketArray.splice(index, 1);
+    }
+  }
+
+  removeCoupon(title: string) {
+    let index: number = this.globals.couponArray.indexOf(title);
+    if (index !== -1) {
+      this.globals.RemovedCouponsArray.push(title);
+      this.globals.couponArray.splice(index, 1);
     }
   }
 

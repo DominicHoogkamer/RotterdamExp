@@ -1,8 +1,8 @@
+import { AboutPage } from './../about/about';
 import { ProfilePage } from './../profile/profile';
 import { IntroPage } from './../intro/intro';
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 
 @Component({

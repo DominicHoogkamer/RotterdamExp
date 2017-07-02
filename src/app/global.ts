@@ -1,8 +1,9 @@
 export class Globals  {
-    public rpAmount: number = 4
-    public couponArray = '';
+    public rpAmount: number = 3
+    public couponArray = [];
     public ticketArray = [];
     public RemovedTicketsArray = [];
+    public RemovedCouponsArray = [];
 
     constructor() {
 
@@ -12,7 +13,7 @@ export class Globals  {
         this.rpAmount = 0;
     }
 
-    get getRPAmount() {
+    getRPAmount() {
         return this.rpAmount;
     }
 
