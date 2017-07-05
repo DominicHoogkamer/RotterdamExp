@@ -234,7 +234,7 @@ export class AboutPage {
             this.RPamount = this.globals.getRPAmount();
             const toast = this.toastCrtl.create({
                 message: "Achievement You logged in for the first time, you have earned 1 Rotterdam Point!",
-                duration: 2500
+                duration: 4000
             });
             toast.present();
             this.loadItems();
@@ -244,6 +244,7 @@ export class AboutPage {
 
     ionViewWillEnter() {
         this.loadItems();
+        this.getLocation();
     }
 
 
@@ -273,7 +274,7 @@ export class AboutPage {
                 loader.dismiss();
                 const toast = this.ToastController.create({
                     message: "Could get location, please pick it manually",
-                    duration: 2500
+                    duration: 4000
                 });
                 toast.present();
             }
@@ -323,7 +324,7 @@ export class AboutPage {
 
                 const toast = this.toastCrtl.create({
                     message: `De route naar ${this.DirectionTitle} duurt 10 minuten en is ongeveer 200 meter verderop`,
-                    duration: 2500,
+                    duration: 4000,
                 });
                 toast.present();
 

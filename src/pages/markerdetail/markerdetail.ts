@@ -15,20 +15,20 @@ export class MarkerdetailPage {
   private dataArray;
 
   constructor(
-    public viewCtrl: ViewController, 
-    public alertCtrl: AlertController, 
+    public viewCtrl: ViewController,
+    public alertCtrl: AlertController,
     public params: NavParams,
     public toastCtrl: ToastController,
     public camera: Camera,
     public navParams: NavParams,
     public globals: Globals) {
 
-      this.dataArray = navParams.get('markerData');
-      console.log(this.dataArray);
+    this.dataArray = navParams.get('markerData');
+    console.log(this.dataArray);
 
   }
 
-  presentAlertGames(){
+  presentAlertGames() {
     let alert = this.alertCtrl.create({
       title: 'Here you can see how much quests you completed of this area',
       subTitle: 'You have completed 1 out of 4 games in this area',
@@ -52,48 +52,48 @@ export class MarkerdetailPage {
     let alert = this.alertCtrl.create({
       title: 'What would you rate this attraction?',
       subTitle: 'So we can get a better understanding of what is good for you',
-      inputs : [
-      {
-        type:'radio',
-        label:'Give 1 star',
-        value:'1'
-      },
-      {
-        type:'radio',
-        label:'Give 2 stars',
-        value:'2'
-      },
-      {
-        type:'radio',
-        label:'Give 3 stars',
-        value:'3'
-      },
-      {
-        type:'radio',
-        label:'Give 4 stars',
-        value:'4'
-      },
-      {
-        type:'radio',
-        label:'Give 5 stars',
-        value:'5'
-      }       
+      inputs: [
+        {
+          type: 'radio',
+          label: 'Give 1 star',
+          value: '1'
+        },
+        {
+          type: 'radio',
+          label: 'Give 2 stars',
+          value: '2'
+        },
+        {
+          type: 'radio',
+          label: 'Give 3 stars',
+          value: '3'
+        },
+        {
+          type: 'radio',
+          label: 'Give 4 stars',
+          value: '4'
+        },
+        {
+          type: 'radio',
+          label: 'Give 5 stars',
+          value: '5'
+        }
 
       ],
       buttons: [
-      {
-        text: "Cancel",
-        handler: data => {
-          this.myRating = 0;
+        {
+          text: "Cancel",
+          handler: data => {
+            this.myRating = 0;
+          }
+        },
+        {
+          text: "Search",
+          handler: data => {
+            this.myRating = data;
+            this.presentToast();
+          }
         }
-      },
-      {
-        text: "Search",
-        handler: data => {
-          this.myRating = data;
-          this.presentToast();
-        }
-      }
       ]
     });
     alert.present();
@@ -115,18 +115,18 @@ export class MarkerdetailPage {
       correctOrientation: true
     })
       .then(
-        imageData => {
-          this.imageUrl = 'data:image/jpeg;base64,' + imageData;
-        }
+      imageData => {
+        this.imageUrl = 'data:image/jpeg;base64,' + imageData;
+      }
       )
       .catch(
-        err => {
-          console.log(err)
-        }
+      err => {
+        console.log(err)
+      }
       );
   }
 
-  getLocation(){
+  getLocation() {
     let lat = this.navParams.get('markerData').lat;
     let lng = this.navParams.get('markerData').lng;
     let title = this.navParams.get('markerData').title;
@@ -136,9 +136,15 @@ export class MarkerdetailPage {
   buyTicket() {
     let ticketTitle = this.navParams.get('markerData').title;
 
-    if (this.globals.ticketArray.indexOf(ticketTitle) !== -1){
+    if (this.globals.ticketArray.indexOf(ticketTitle) !== -1) {
     } else {
-        this.globals.ticketArray.push(ticketTitle);
+      let toast = this.toastCtrl.create({
+        message: `Bedankt voor het kopen van een ticket voor ${ this.navParams.get('markerData').title}. Uw Ticket is te vinden op de profiel pagina.`,
+        duration: 4000,
+        position: 'bottom'
+      });
+      toast.present();
+      this.globals.ticketArray.push(ticketTitle);
     }
 
   }
