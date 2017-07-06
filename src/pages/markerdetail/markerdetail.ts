@@ -24,23 +24,21 @@ export class MarkerdetailPage {
     public globals: Globals) {
 
     this.dataArray = navParams.get('markerData');
-    console.log(this.dataArray);
 
   }
 
   presentAlertGames() {
     let alert = this.alertCtrl.create({
-      title: 'Here you can see how much quests you completed of this area',
-      subTitle: 'You have completed 1 out of 4 games in this area',
+      title: 'Hier kan je zien hoeveel opdrachten er al zijn voltooid op deze attractie',
+      subTitle: 'Je hebt 1 uit de 4 opdrachten voltooid',
       buttons: [
         {
           text: 'Cancel',
           role: 'Cancel'
         },
         {
-          text: 'Go play the games!',
+          text: 'Dichtbij genoeg? Voltooi een opdracht!',
           handler: () => {
-            console.log('go to ar page')
           }
         }
       ]
@@ -101,7 +99,7 @@ export class MarkerdetailPage {
 
   presentToast() {
     let toast = this.toastCtrl.create({
-      message: 'Thanks for rating this attraction',
+      message: 'Bedankt voor het beoordelen van deze attractie!',
       duration: 3000,
       position: 'bottom'
     });
@@ -137,9 +135,15 @@ export class MarkerdetailPage {
     let ticketTitle = this.navParams.get('markerData').title;
 
     if (this.globals.ticketArray.indexOf(ticketTitle) !== -1) {
+      let toast = this.toastCtrl.create({
+        message: `Uw heeft al een ticket gekocht bekijk de profiel pagina`,
+        duration: 4000,
+        position: 'bottom'
+      });
+      toast.present();
     } else {
       let toast = this.toastCtrl.create({
-        message: `Bedankt voor het kopen van een ticket voor ${ this.navParams.get('markerData').title}. Uw Ticket is te vinden op de profiel pagina.`,
+        message: `Bedankt voor het kopen van een ticket voor ${this.navParams.get('markerData').title}. Uw Ticket is te vinden op de profiel pagina.`,
         duration: 4000,
         position: 'bottom'
       });

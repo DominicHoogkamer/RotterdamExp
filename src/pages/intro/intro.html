@@ -1,135 +1,122 @@
-
-
-
 <ion-content no-bounce>
 
-<ion-slides>
+  <ion-slides>
 
-<ion-slide padding>
-    <img src="assets/img/Icon_Slide4.png" alt="">
-    <h2>Please fill in your name</h2>
-    <p>So we can communicate a lot nicer to eachother!</p>
-    <ion-item padding>
-      <ion-label floating>What is your name?</ion-label>
-      <ion-input [(ngModel)]="personName" type="text"></ion-input>
-    </ion-item>
-    <ion-footer>
-      <button ion-button block [disabled]="!personName"(click)="nextPage()" class="button-intro">Go to next page</button>
-    </ion-footer>
-</ion-slide>
+    <ion-slide padding>
+      <img src="assets/img/Icon_Slide4.png" alt="">
+      <h2>Please fill in your name</h2>
+      <p>So we can communicate a lot nicer to eachother!</p>
+      <ion-item padding>
+        <ion-label floating>What is your name?</ion-label>
+        <ion-input [(ngModel)]="personName" type="text"></ion-input>
+      </ion-item>
+      <button ion-button block [disabled]="!personName" (click)="nextPage()" class="button-intro">Go to next page</button>
+    </ion-slide>
 
-<ion-slide padding>
-    <img src="assets/img/Icon_Slide4.png" alt="">
-    <h2>Tell us where you are from?</h2>
-    <p>So we can translate the app for you!</p>
-    <ion-item>
-      <ion-label>Country</ion-label>
-      <ion-select [(ngModel)]="country" >
-        <ion-option *ngFor="let country of countrySelection" [value]="country">{{ country.name }}</ion-option>
-      </ion-select>
-    </ion-item>
-    <ion-footer>
-      <button ion-button block [disabled]="!personName"(click)="nextPage()" class="button-intro">Go to next page</button>
-    </ion-footer>
-</ion-slide>
+    <ion-slide padding>
+      <img src="assets/img/Icon_Slide4.png" alt="">
+      <h2>Tell us where you are from?</h2>
+      <p>So we can translate the app for you!</p>
+      <ion-item>
+        <ion-label>Country</ion-label>
+        <ion-select [(ngModel)]="country">
+          <ion-option *ngFor="let country of countrySelection" [value]="country">{{ country.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-footer>
+        <button ion-button block [disabled]="!personName" (click)="nextPage()" class="button-intro">Go to next page</button>
+      </ion-footer>
+    </ion-slide>
 
-<ion-slide padding>
-    <img src="assets/img/Icon_Slide3.png" alt="">
-    <h2>Please take a Selfie!</h2>
-    <p>So the app is all about you!</p>
-    <ion-row>
-      <ion-col><button ion-button block (click)="takeSelfie()" outline>Take a Selfie</button></ion-col>
-      <ion-col><button ion-button block (click)="nextPage()" outline>Or Dont :)</button></ion-col>
-    </ion-row>
-    <ion-footer>
-      <button ion-button block  (click)="nextPage()" class="button-intro">Go to next page</button>
-    </ion-footer>
-</ion-slide>
+    <ion-slide padding>
+      <img src="assets/img/Icon_Slide3.png" alt="">
+      <h2>Please take a Selfie!</h2>
+      <p>So the app is all about you!</p>
+      <ion-row>
+        <ion-col><button ion-button block (click)="takeSelfie()" outline>Take a Selfie</button></ion-col>
+        <ion-col><button ion-button block (click)="nextPage()" outline>Or Dont :)</button></ion-col>
+      </ion-row>
+      <ion-footer>
+        <button ion-button block (click)="nextPage()" class="button-intro">Go to next page</button>
+      </ion-footer>
+    </ion-slide>
 
-<ion-slide padding>
-    <img src="assets/img/Icon_Slide2.png" alt="">
-    <h2>How long will you stay {{personName}}?</h2>
-    <p>To plan the best trip for your stay!</p>
-    <ion-item>
-      <ion-label floating>When do you arrive?</ion-label>
+    <ion-slide padding>
+      <img src="assets/img/Icon_Slide2.png" alt="">
+      <h2>How long will you stay {{personName}}?</h2>
+      <p>To plan the best trip for your stay!</p>
+      <ion-item>
+        <ion-label floating>When do you arrive?</ion-label>
         <ion-datetime [(ngModel)]="arriveDate" displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY "></ion-datetime>
-    </ion-item>
-    <ion-item>  
-      <ion-label floating>When do you leave?</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>When do you leave?</ion-label>
         <ion-datetime [(ngModel)]="leaveDate" displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY "></ion-datetime>
-    </ion-item>
-    <ion-footer>
-      <button ion-button block [disabled]="!arriveDate || !leaveDate"(click)="nextPage()" class="button-intro">Go to next page</button>
-    </ion-footer>
-  </ion-slide>
-
-<ion-slide padding>
-    <img src="assets/img/Icon_Slide1.png" alt="">
-    <h2>What would you like to see?</h2>
-  <ion-list>
-
-            <ion-list-header>
-        Sports vs Shopping
-      </ion-list-header>
-      <ion-item>
-        <ion-range >
-          <ion-icon range-left small name="basketball"></ion-icon>
-          <ion-icon range-right name="basket"></ion-icon>
-        </ion-range>
       </ion-item>
-                  <ion-list-header>
+      <ion-footer>
+        <button ion-button block [disabled]="!arriveDate || !leaveDate" (click)="nextPage()" class="button-intro">Go to next page</button>
+      </ion-footer>
+    </ion-slide>
+
+    <ion-slide padding>
+      <img src="assets/img/Icon_Slide1.png" alt="">
+      <h2>What would you like to see?</h2>
+      <ion-list>
+            Sports vs Shopping
+        <ion-item>
+          <ion-range>
+            <ion-icon range-left small name="basketball"></ion-icon>
+            <ion-icon range-right name="basket"></ion-icon>
+          </ion-range>
+        </ion-item>
         Music vs Food
-      </ion-list-header>
-      <ion-item>
-        <ion-range >
-          <ion-icon range-left small name="musical-note"></ion-icon>
-          <ion-icon range-right name="pizza"></ion-icon>
-        </ion-range>
-      </ion-item>
-                        <ion-list-header>
+        <ion-item>
+          <ion-range>
+            <ion-icon range-left small name="musical-note"></ion-icon>
+            <ion-icon range-right name="pizza"></ion-icon>
+          </ion-range>
+        </ion-item>
         Outside vs Inside
-      </ion-list-header>
-      <ion-item>
-        <ion-range>
-          <ion-icon range-left small name="leaf"></ion-icon>
-          <ion-icon range-right name="home"></ion-icon>
-        </ion-range>
-      </ion-item>
-                        <ion-list-header>
+        <ion-item>
+          <ion-range>
+            <ion-icon range-left small name="leaf"></ion-icon>
+            <ion-icon range-right name="home"></ion-icon>
+          </ion-range>
+        </ion-item>
         Coffee vs Beer
-      </ion-list-header>
-      <ion-item>
-        <ion-range>
-          <ion-icon range-left small name="cafe"></ion-icon>
-          <ion-icon range-right name="beer"></ion-icon>
-        </ion-range>
-      </ion-item>
- 
-    </ion-list>
+        <ion-item>
+          <ion-range>
+            <ion-icon range-left small name="cafe"></ion-icon>
+            <ion-icon range-right name="beer"></ion-icon>
+          </ion-range>
+        </ion-item>
 
-  <ion-footer>
-    <button ion-button block [disabled]="!personName"(click)="nextPage()" class="button-intro">Go to next page</button>
-  </ion-footer>
-</ion-slide>
+      </ion-list>
 
-<ion-slide class="card-background-page" padding>
+      <ion-footer>
+        <button ion-button block [disabled]="!personName" (click)="nextPage()" class="button-intro">Go to next page</button>
+      </ion-footer>
+    </ion-slide>
+
+    <ion-slide class="card-background-page" padding>
       <h2>Choose one Activity!</h2>
-  <ion-card (click)="finishIntro()">
-      <img  src="http://www.holland.com/upload_mm/2/0/8/2769_fullimage_rotterdam%20museum%20boijmans%20van%20beuningenVIT.jpg.jpg"/>
-      <div class="card-title">Museum Boijmans</div>
-      <div class="card-subtitle">Art, Museum</div>
-    </ion-card>
+      <ion-card (click)="finishIntro()">
+        <img src="http://www.holland.com/upload_mm/2/0/8/2769_fullimage_rotterdam%20museum%20boijmans%20van%20beuningenVIT.jpg.jpg"
+        />
+        <div class="card-title">Museum Boijmans</div>
+        <div class="card-subtitle">Art, Museum</div>
+      </ion-card>
 
-    <ion-card (click)="finishIntro()">
-      <img  src="https://www.rotown.nl/wp-content/uploads/2015/05/Rotown-Photo-Credit-Jan-Bijl.jpg"/>
-      <div class="card-title">Rotown</div>
-      <div class="card-subtitle">Poppodium, Café en Restaurant</div>
-    </ion-card>
-    <ion-footer>
-    <button ion-button block [disabled]="!personName"(click)="finishIntro()" class="button-intro">Go to next page</button>
-    </ion-footer>
-</ion-slide>
+      <ion-card (click)="finishIntro()">
+        <img src="https://www.rotown.nl/wp-content/uploads/2015/05/Rotown-Photo-Credit-Jan-Bijl.jpg" />
+        <div class="card-title">Rotown</div>
+        <div class="card-subtitle">Poppodium, Café en Restaurant</div>
+      </ion-card>
+      <ion-footer>
+        <button ion-button block [disabled]="!personName" (click)="finishIntro()" class="button-intro">Go to next page</button>
+      </ion-footer>
+    </ion-slide>
 
-</ion-slides>
+  </ion-slides>
 
 </ion-content>

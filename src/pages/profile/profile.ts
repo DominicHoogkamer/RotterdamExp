@@ -1,6 +1,6 @@
 import { Globals } from './../../app/global';
 import { Component } from '@angular/core';
-import { ActionSheetController } from 'ionic-angular';
+import { ActionSheetController, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-profile',
@@ -23,7 +23,7 @@ export class ProfilePage {
   private couponArray;
   private removedCoupons;
 
-  constructor(public actionsSheetCtrl: ActionSheetController, public globals: Globals) {
+  constructor(public actionsSheetCtrl: ActionSheetController, public globals: Globals, public alertCtrl: AlertController) {
     this.RPamount = globals.rpAmount;
 
     this.ticketArray = globals.ticketArray;
@@ -45,6 +45,22 @@ export class ProfilePage {
     }
 
 
+  }
+
+  getCoupon(){
+        let alert = this.alertCtrl.create({
+      title: '12asdjansd913',
+      subTitle: 'Show this code at the counter',
+      buttons: [
+        {
+          text: 'Go back',
+          handler: () => {
+            console.log('go to ar page')
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
 

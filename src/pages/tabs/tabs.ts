@@ -10,7 +10,7 @@ import { ContactPage } from '../contact/contact';
 })
 export class TabsPage {
 
-  tab1Root = AboutPage;
+  tab1Root = IntroPage;
   tab2Root = ContactPage;
   tab3Root = ProfilePage;
 

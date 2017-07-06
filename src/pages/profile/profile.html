@@ -64,7 +64,7 @@
         <h2>{{ coupon }}</h2>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="getCoupon()">
           <ion-icon name="mail"></ion-icon>
           See Coupon
         </button>
@@ -121,7 +121,7 @@
         <h2>{{ ticket }}</h2>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="getCoupon()">
           <ion-icon name="mail"></ion-icon>
           See Ticket
         </button>
